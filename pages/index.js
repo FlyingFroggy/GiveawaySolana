@@ -2,18 +2,18 @@ import Head from 'next/head'
 import { useEffect, useState } from 'react'
 
 export default function Home() {
-  const [countdown, setCountdown] = useState(900) // 15 min
-  const [pot, setPot] = useState(1.23) // starting pot (fake for now)
+  const [countdown, setCountdown] = useState(900)
+  const [pot, setPot] = useState(1.23)
 
   useEffect(() => {
     const interval = setInterval(() => {
       setCountdown(prev => (prev <= 0 ? 900 : prev - 1))
-      setPot(prev => +(prev + 0.001).toFixed(3)) // simulate growth
+      setPot(prev => +(prev + 0.001).toFixed(3))
     }, 1000)
     return () => clearInterval(interval)
   }, [])
 
-  const formatTime = (s: number) => {
+  const formatTime = (s) => {
     const m = Math.floor(s / 60)
     const sec = s % 60
     return `${m}:${sec < 10 ? '0' : ''}${sec}`
@@ -50,10 +50,10 @@ export default function Home() {
         <div className="w-full max-w-2xl text-left mb-12">
           <h2 className="text-xl font-semibold mb-2">How It Works</h2>
           <ul className="list-disc list-inside text-gray-300">
-            <li>Hold at least <strong>100,000 $GIVE</strong> in your wallet</li>
+            <li>Hold at least <strong>100,000 $GIVE</strong></li>
             <li>Every 15 minutes, 1 random wallet gets the pot</li>
-            <li>Pot is funded by 4% transaction tax</li>
-            <li>All draws are logged below for full transparency</li>
+            <li>Pot is funded by 4% tax on transactions</li>
+            <li>All draws are posted here to verify transparency</li>
           </ul>
         </div>
 
